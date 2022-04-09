@@ -116,7 +116,7 @@ regr = LinearRegression()
 regr.fit(X_train,y_train)
 pred = regr.predict(X_test)
 print(pred)
-print("accuracy : ")
-print(regr.score(X_test,y_test))
+print("Accuracy",regr.score(X_test,y_test))
+
 #git config --global --edit::
 
