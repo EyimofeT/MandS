@@ -35,7 +35,7 @@ test = test.apply(pd.to_numeric, errors='coerce')
 train.fillna(0, inplace=True)
 test.fillna(0, inplace=True)
 
-X_train,X_test,y_train,y_test=train_test_split(train,test,test_size=200,random_state=2)
+X_train,X_test,y_train,y_test=train_test_split(train,test,test_size=0.3,random_state=2)
 
 regr = LinearRegression()
 
