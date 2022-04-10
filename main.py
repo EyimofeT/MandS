@@ -16,7 +16,7 @@ pd.DataFrame(data).fillna(data.mean(), inplace=True)
 data.interpolate()
 #pd.reset_option('display.max_rows|display.max_columns|display.width')
 
-print(data)
+#print(data)
 #print(data.head())
 # data.head()
 # print('here now : \t')
@@ -27,11 +27,29 @@ print(data)
 # print(data.isnull().sum())
 
 #visualize
-# print(sns.relplot(x='Diagnosis Age',y='Overall Survival Status',data=data))
+datagraph = pd.read_csv('workdata.tsv', sep='\t')
+sns.set(style="darkgrid")
+#print(sns.relplot(x='Diagnosis Age',y='Overall Survival Status',data=datagraph))
+sns.relplot(y='Diagnosis Age',
+            x='Overall Survival Status'
+            ,hue="Sex",data=datagraph ,kind='line')
 # sns.relplot(y='Diagnosis Age',
-#            x='Overall Survival Status'
-#            ,hue="Sex",data=data)
-# plt.show()
+#             x='Sex'
+#             ,data=datagraph, kind='line')
+
+#diagram 1
+# show=sns.FacetGrid(data,col='Diagnosis Age')
+# show.map(plt.hist,'Overall Survival Status')
+
+#diagram 2
+show=sns.FacetGrid(data,col='Sex')
+show.map(plt.hist,'Overall Survival Status')
+
+#diagram 3
+show=sns.FacetGrid(data,col='Sex')
+show.map(plt.hist,'Diagnosis Age')
+
+plt.show()
 
 
 #train=data.drop(['Overall Survival Status','Study ID','Sample ID','American Joint Committee on Cancer Metastasis Stage Code','American Joint Committee on Cancer Publication Version Type','Subtype','Sample Type','Patient ID','Number of Samples Per Patient'],axis=1)
@@ -48,8 +66,8 @@ train=data.drop([
 'TCGA PanCanAtlas Cancer Type Acronym',
 'Cancer Type Detailed',
 'Last Communication Contact from Initial Pathologic Diagnosis Date',
-'Birth from Initial Pathologic Diagnosis Date',
-'Last Alive Less Initial Pathologic Diagnosis Date Calculated Day Value',
+#'Birth from Initial Pathologic Diagnosis Date',
+#'Last Alive Less Initial Pathologic Diagnosis Date Calculated Day Value',
  'Disease Free (Months)',
  'Disease Free Status',
  #'Months of disease-specific survival',
@@ -99,8 +117,10 @@ train=data.drop([
 #'Winter Hypoxia Score'
  ],axis=1)
 
+#test=data['Sex']
+#test=data[data['Sex'] == 0]
 test=data['Overall Survival Status']
-
+train=train[train.Sex != '1']
 
 # train= train.apply(pd.to_numeric, errors='coerce')
 # test = test.apply(pd.to_numeric, errors='coerce')
