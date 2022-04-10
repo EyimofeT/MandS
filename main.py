@@ -51,7 +51,7 @@ show.map(plt.hist,'Diagnosis Age')
 
 plt.show()
 
-
+#training and testing
 #train=data.drop(['Overall Survival Status','Study ID','Sample ID','American Joint Committee on Cancer Metastasis Stage Code','American Joint Committee on Cancer Publication Version Type','Subtype','Sample Type','Patient ID','Number of Samples Per Patient'],axis=1)
 train=data.drop([
     'Study ID',
