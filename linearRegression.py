@@ -2,6 +2,9 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
+from sklearn import tree
+from sklearn import ensemble
+
 def train():
 #training and testing
 #train=data.drop(['Overall Survival Status','Study ID','Sample ID','American Joint Committee on Cancer Metastasis Stage Code','American Joint Committee on Cancer Publication Version Type','Subtype','Sample Type','Patient ID','Number of Samples Per Patient'],axis=1)
@@ -92,6 +95,9 @@ def train():
 
     regr.fit(X_train,y_train)
     pred = regr.predict(X_test)
-    print(pred)
+    #print(pred)
     percentage=round((regr.score(X_test,y_test)*100),2)
+    print("Using Linear Regression Model")
     print("Accuracy [ + ] :",percentage,"%")
+    
+    
