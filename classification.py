@@ -81,6 +81,8 @@ def train():
     
     # Seperate the dataframe into X and y data
     # print("Classification Models")
+    #using only male data
+    train=train[train.Sex != '1']
     X = train
     y = data['Overall Survival Status']
     
